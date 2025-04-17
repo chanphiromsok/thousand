@@ -10,21 +10,32 @@ module.exports = function (api) {
           lazyImports: true,
           disableImportExportTransform: !isTestEnv, // set to false when running unit test
           native: {
-            minifyTypeofWindow: false //https://github.com/expo/expo/tree/main/packages/babel-preset-expo#minifytypeofwindow
-          }
-        }
+            minifyTypeofWindow: false, //https://github.com/expo/expo/tree/main/packages/babel-preset-expo#minifytypeofwindow
+          },
+        },
       ],
-      "nativewind/babel"
+      "nativewind/babel",
     ],
     plugins: [
-      ["babel-plugin-react-compiler", { target: "18" }], // must run first!
+      ["babel-plugin-react-compiler", { target: "19" }], // must run first!
+      [
+        "module-resolver",
+        {
+          root: ["./src"],
+          extensions: [".ios.js", ".android.js", ".js", ".ts", ".tsx", ".json"],
+          alias: {
+            tests: ["./tests/"],
+            "@components": "./src/components",
+          },
+        },
+      ],
       "@lingui/babel-plugin-lingui-macro",
-      "react-native-reanimated/plugin" //Reanimated must be last
+      "react-native-reanimated/plugin", //Reanimated must be last
     ],
     env: {
       production: {
-        plugins: ["transform-remove-console"]
-      }
-    }
+        plugins: ["transform-remove-console"],
+      },
+    },
   };
 };

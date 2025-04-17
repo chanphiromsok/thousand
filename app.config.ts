@@ -11,7 +11,7 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
     orientation: "portrait",
     icon: "./assets/icon.png",
     userInterfaceStyle: "automatic",
-    newArchEnabled: false,
+    newArchEnabled: true,
     assetBundlePatterns: ["**/*"],
     splash: {
       image: "./assets/splash-icon.png",
@@ -72,6 +72,9 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
         foregroundImage: "./assets/adaptive-icon.png",
         backgroundColor: "#ffffff",
       },
+    },
+    experiments: {
+      reactCompiler: true,
     },
     web: {
       favicon: "./assets/favicon.png",
