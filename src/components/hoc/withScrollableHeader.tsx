@@ -1,7 +1,10 @@
 import React, { ComponentType, useCallback, useState } from "react";
 import { LayoutChangeEvent, NativeScrollEvent } from "react-native";
-import Animated, { interpolate, useAnimatedStyle, useSharedValue } from "react-native-reanimated";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import Animated, {
+  interpolate,
+  useAnimatedStyle,
+  useSharedValue,
+} from "react-native-reanimated";
 
 interface ScrollableHeaderProps {
   renderHeader: () => React.ReactNode;
@@ -14,7 +17,6 @@ interface RenderList {
 
 const withScrollableHeader = (WrappedComponent: ComponentType<RenderList>) => {
   const ScrollableHeader = ({ renderHeader }: ScrollableHeaderProps) => {
-    const { top: offsetTop } = useSafeAreaInsets();
     const scrollY = useSharedValue(0);
     const onScrollWorklet = useCallback((e: NativeScrollEvent) => {
       "worklet";
@@ -32,25 +34,29 @@ const withScrollableHeader = (WrappedComponent: ComponentType<RenderList>) => {
           {
             translateY: interpolate(
               scrollY.value,
-              [0, headerHeight + offsetTop],
-              [offsetTop, -headerHeight],
+              [0, headerHeight],
+              [0, -headerHeight],
               "clamp"
-            )
-          }
-        ]
+            ),
+          },
+        ],
       };
-    }, [scrollY, headerHeight, offsetTop]);
+    }, [scrollY, headerHeight]);
 
     return (
       <>
         <Animated.View
-          style={[{ position: "absolute", width: "100%", zIndex: 1 }, collapsibleHeader]}
-          onLayout={onHeaderLayout}>
+          style={[
+            { position: "absolute", width: "100%", zIndex: 1 },
+            collapsibleHeader,
+          ]}
+          onLayout={onHeaderLayout}
+        >
           {renderHeader()}
         </Animated.View>
         <WrappedComponent
           onScrollWorklet={onScrollWorklet}
-          headerHeight={headerHeight + offsetTop}
+          headerHeight={headerHeight}
         />
       </>
     );

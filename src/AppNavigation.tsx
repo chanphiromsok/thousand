@@ -8,7 +8,11 @@ const AppNavigation = () => {
   return (
     <NavigationContainerTheme>
       <Stack.Navigator>
-        <Stack.Screen name="listing" component={ListingScreen} />
+        <Stack.Screen
+          name="listing"
+          options={{ headerShown: false }}
+          component={ListingScreen}
+        />
       </Stack.Navigator>
     </NavigationContainerTheme>
   );

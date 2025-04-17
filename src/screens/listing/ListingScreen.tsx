@@ -1,16 +1,18 @@
-import { Image } from "expo-image";
 import { useCallback } from "react";
+import AutoResizeImage from "../../components/image/AutoSizeImage";
 import VStack from "../../components/views/VStack";
+import ListingCategory from "./components/ListingCategory";
 import ListingProduct from "./components/ListingProduct";
 const ListingScreen = () => {
   const renderHeader = useCallback(() => {
     return (
       <VStack>
-        <Image
+        <AutoResizeImage
           source={{
-            uri: "https://simple.wikipedia.org/wiki/Costco#/media/File:Costco_Wholesale_logo_2010-10-26.svg",
+            uri: "https://bfasset.costco-static.com/56O3HXZ9/at/hbgg2kcsgpqkpq9j9wc4nv/d_25w08213_banner_lockedin.jpg?auto=webp&format=jpg&width=1400",
           }}
         />
+        <ListingCategory />
       </VStack>
     );
   }, []);

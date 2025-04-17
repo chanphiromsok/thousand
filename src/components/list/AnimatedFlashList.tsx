@@ -58,6 +58,8 @@ const AnimatedFlashList = ({
     };
     contentOffset = { x: 0, y: headerOffset * -1 };
   }
+  
+
   return (
     <FList
       showsVerticalScrollIndicator={!isAndroid} // overridable
@@ -67,6 +69,7 @@ const AnimatedFlashList = ({
       scrollIndicatorInsets={{ top: headerOffset }}
       contentOffset={contentOffset}
       onScroll={scrollHandler}
+      contentContainerStyle={rest.contentContainerStyle}
       {...rest}
       ref={ref}
     />
