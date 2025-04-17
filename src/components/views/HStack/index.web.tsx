@@ -1,13 +1,19 @@
-import React, { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 import { View } from "react-native";
-import { cn } from "../../utils";
+import { cn } from "../../../utils/cn";
 
 type HStackProps = PropsWithChildren<{
   className?: string;
   flex?: boolean;
   center?: "both" | "vertical" | "horizontal";
 }>;
-const HStack = ({ children, className, flex, center, ...props }: HStackProps) => {
+const HStack = ({
+  children,
+  className,
+  flex,
+  center,
+  ...props
+}: HStackProps) => {
   return (
     <View
       className={cn(
@@ -18,7 +24,8 @@ const HStack = ({ children, className, flex, center, ...props }: HStackProps) =>
         center === "both" && "justify-center items-center", // Centers both horizontally and vertically
         className
       )}
-      {...props}>
+      {...props}
+    >
       {children}
     </View>
   );

@@ -1,6 +1,6 @@
-import React, { PropsWithChildren } from "react";
-import { themesVars } from "./themeVars";
+import { PropsWithChildren } from "react";
 import Stack from "../components/views/Stack";
+import { themesVars } from "./themeVars";
 
 export const Theme = ({
   children,

@@ -11,7 +11,7 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
     orientation: "portrait",
     icon: "./assets/icon.png",
     userInterfaceStyle: "automatic",
-    newArchEnabled: true,
+    newArchEnabled: false,
     assetBundlePatterns: ["**/*"],
     splash: {
       image: "./assets/splash-icon.png",

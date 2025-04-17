@@ -1,6 +1,6 @@
-import React, { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 import { ViewProps } from "react-native";
-import { cn } from "../../utils";
+import { cn } from "../../../utils/cn";
 import { RTCView } from "../RTCView";
 
 type StackProps = PropsWithChildren<

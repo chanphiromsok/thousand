@@ -22,4 +22,4 @@ config.transformer.getTransformOptions = async () => ({
 config.transformer.babelTransformerPath = require.resolve("./metro.transformer.js");
 config.transformer.minifierConfig.compress.drop_console = true;
 config.resolver.sourceExts = [...config.resolver.sourceExts, "po"];
-module.exports = wrapWithReanimatedMetroConfig(withNativeWind(config, { input: "./global.css" }))
+module.exports = withNativeWind(config, { input: "./global.css" })

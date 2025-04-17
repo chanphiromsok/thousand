@@ -1,15 +1,16 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer } from "@react-navigation/native";
+import NavigationContainerTheme from "./navigation/NavigationContainerTheme";
+import ListingScreen from "./screens/listing/ListingScreen";
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigation = () => {
   return (
-    <NavigationContainer>
-      <Stack.Screen>
-
-      </Stack.Screen>
-    </NavigationContainer>
+    <NavigationContainerTheme>
+      <Stack.Navigator>
+        <Stack.Screen name="listing" component={ListingScreen} />
+      </Stack.Navigator>
+    </NavigationContainerTheme>
   );
 };
 

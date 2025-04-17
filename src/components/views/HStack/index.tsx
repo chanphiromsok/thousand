@@ -1,7 +1,8 @@
 import type { ClassValue } from "clsx";
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { ViewProps } from "react-native";
-import { cn } from "../../utils";
+
+import { cn } from "../../../utils/cn";
 import { RTCView } from "../RTCView";
 
 type HStackProps = PropsWithChildren<

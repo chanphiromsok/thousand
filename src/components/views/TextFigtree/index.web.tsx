@@ -1,6 +1,6 @@
-import React from "react";
 import { Text, TextProps } from "react-native";
-import { cn } from "../../utils";
+import { cn } from "../../../utils/cn";
+
 
 type Props = {
   children: string;

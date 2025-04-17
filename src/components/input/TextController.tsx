@@ -1,8 +1,8 @@
 import type { ClassValue } from "clsx";
-import React from "react";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import { TextInput, TextInputProps } from "react-native";
-import { cn } from "../utils";
+
+import { cn } from "../../utils/cn";
 import TextFigtree from "../views/TextFigtree";
 import VStack from "../views/VStack";
 

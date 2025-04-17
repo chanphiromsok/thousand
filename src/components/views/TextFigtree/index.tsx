@@ -1,8 +1,8 @@
-import React, { ReactNode } from "react";
-import { Text, TextProps } from "react-native";
-import { cn } from "../../utils";
-import RTCText from "../RTCText";
 import type { ClassValue } from "clsx";
+import { ReactNode } from "react";
+import { Text, TextProps } from "react-native";
+import { cn } from "../../../utils/cn";
+import RTCText from "../RTCText";
 
 type Props = {
   children: ReactNode;

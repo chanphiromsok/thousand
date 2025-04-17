@@ -1,6 +1,7 @@
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { View } from "react-native";
-import { cn } from "../../utils";
+import { cn } from "../../../utils/cn";
+
 
 type VStackProps = PropsWithChildren<{
   className?: string;

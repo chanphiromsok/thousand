@@ -1,8 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
 import * as Splash from "expo-splash-screen";
 import { PropsWithChildren, useCallback } from "react";
-import { useThemeConfig } from "../theme/hook/useThemeConfig";
 import { Theme } from "../theme";
+import { useThemeConfig } from "../theme/hook/useThemeConfig";
 
 const NavigationContainerTheme = ({ children }: PropsWithChildren) => {
   const { selectedTheme, theme } = useThemeConfig();
