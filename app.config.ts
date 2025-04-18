@@ -28,6 +28,13 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
     },
     platforms: ["ios", "android"],
     plugins: [
+      [
+        "react-native-vision-camera",
+        {
+          cameraPermissionText: "$(PRODUCT_NAME) needs access to your Camera.",
+          enableCodeScanner: true,
+        },
+      ],
       ["react-native-edge-to-edge", { android: { parentTheme: "Light" } }],
       [
         "expo-build-properties",
@@ -57,6 +64,7 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
         {
           fonts: [
             "./assets/fonts/material-symbols.ttf",
+            "./assets/fonts/Silkscreen-Regular.ttf",
             "./assets/fonts/Figtree-Regular.ttf",
             "./assets/fonts/Figtree-Medium.ttf",
             "./assets/fonts/Figtree-SemiBold.ttf",
