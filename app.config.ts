@@ -28,13 +28,6 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
     },
     platforms: ["ios", "android"],
     plugins: [
-      [
-        "react-native-vision-camera",
-        {
-          cameraPermissionText: "$(PRODUCT_NAME) needs access to your Camera.",
-          enableCodeScanner: true,
-        },
-      ],
       ["react-native-edge-to-edge", { android: { parentTheme: "Light" } }],
       [
         "expo-build-properties",
