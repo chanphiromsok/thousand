@@ -1,67 +1,84 @@
-import { ListRenderItem } from "@shopify/flash-list";
-import { useQuery } from "@tanstack/react-query";
-import { Image } from "expo-image";
-import { useCallback, useRef } from "react";
+import {
+  LegendList,
+  LegendListRef,
+  LegendListRenderItemProps,
+} from "@legendapp/list";
+import { RefObject, useCallback, useRef } from "react";
 import { NativeScrollEvent } from "react-native";
-import withScrollableHeader from "../../../components/hoc/withScrollableHeader";
-import AnimatedFlashList, {
-  AnimatedFlashListRef,
-} from "../../../components/list/AnimatedFlashList";
+import MaterialSymbolIcons from "../../../components/icons/MaterialSymbolIcons";
+import ImageGrid from "../../../components/image/ImageGrid";
+import HStack from "../../../components/views/HStack";
 import Stack from "../../../components/views/Stack";
 import TextFigtree from "../../../components/views/TextFigtree";
-import device from "../../../platform/device";
+import VStack from "../../../components/views/VStack";
+import { exploreList, ExploreType } from "../exploreList";
 type ListingProps = {
   onScrollWorklet: (e: NativeScrollEvent) => void;
   headerHeight: number;
 };
 const SPACE = 10;
-const SIZE = device.width / 4;
-const imageStyle = { width: SIZE, height: SIZE, borderRadius: 5 };
 const Listing = ({ headerHeight, onScrollWorklet }: ListingProps) => {
-  const { data } = useQuery<Mock[]>({
-    queryKey: ["queryKey"],
-    queryFn: async () => {
-      const res = (
-        await fetch("https://api.escuelajs.co/api/v1/products")
-      ).json();
-      return await res;
-    },
-  });
-  const listRef = useRef(null) as AnimatedFlashListRef;
-  const renderItem: ListRenderItem<Mock> = ({ item }) => {
+  const listRef = useRef(null) as RefObject<LegendListRef | null>;
+  const renderItem = ({
+    item,
+  }: LegendListRenderItemProps<ExploreType>) => {
     return (
-      <Stack center="both">
-        <Image source={{ uri: item.images[0] }} style={imageStyle} />
-        <TextFigtree>{item.title.slice(0,10)}</TextFigtree>
-      </Stack>
+      <VStack className="mb-6" center="horizontal">
+        <VStack center="vertical">
+          <HStack className="justify-between" center="vertical">
+            <HStack center="vertical">
+              <MaterialSymbolIcons
+                className="mr-1"
+                name="kid_star_fill"
+                size={18}
+              />
+              <TextFigtree className="underline font-semibold">4.5</TextFigtree>
+            </HStack>
+          </HStack>
+          <HStack center="vertical">
+            <TextFigtree className="text-primary">
+              {"item.location"} . {item.distance}
+            </TextFigtree>
+            <MaterialSymbolIcons
+              size={16}
+              name="assistant_navigation"
+              className="text-primary ml-1 rotate-90"
+            />
+          </HStack>
+        </VStack>
+        <Stack className="mt-2">
+          <ImageGrid
+            onViewImage={() => {}}
+            images={item.images}
+            type={"row"}
+          />
+        </Stack>
+      </VStack>
     );
   };
   const keyExtractor = useCallback(
-    (item: Mock, index: number) => `${item.id}`,
+    (item: ExploreType, index: number) => `${item.id}`,
     []
   );
 
   return (
-    <AnimatedFlashList
-      data={data}
+    <LegendList
+      data={exploreList}
       ref={listRef}
       keyExtractor={keyExtractor}
       contentContainerStyle={{
         paddingTop: headerHeight,
         paddingLeft: SPACE + 10,
       }}
-      headerOffset={headerHeight}
       renderItem={renderItem}
-      numColumns={4}
       horizontal={false}
-      onScrollWorklet={onScrollWorklet}
       scrollEventThrottle={16}
       estimatedItemSize={560}
     />
   );
 };
 
-const ListingProduct = withScrollableHeader(Listing);
+const ListingProduct = Listing
 export default ListingProduct;
 export interface Mock {
   id: number;
