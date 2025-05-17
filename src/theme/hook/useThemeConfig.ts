@@ -4,15 +4,16 @@ import {
   type Theme,
 } from "@react-navigation/native";
 import { useSelectedTheme } from "./useSelectTheme";
+import { varColors } from "../themeVars";
 
 const DarkTheme: Theme = {
   ..._DarkTheme,
   dark: true,
   colors: {
     ..._DarkTheme.colors,
-    background: "#111111",
-    card: "#111111",
-    text: "#E0E0E0",
+    card: varColors["bg"].dark,
+    text: varColors["text-primary"].dark,
+    background: varColors["bg"].dark,
   },
 };
 
@@ -21,9 +22,9 @@ const LightTheme: Theme = {
   dark: false,
   colors: {
     ...DefaultTheme.colors,
-    background: "#FFFFFF",
-    card: "#FFFFFF",
-    text: "#2B2B2B",
+    card: varColors["bg"].light,
+    text: varColors["text-primary"].light,
+    background: varColors["bg"].light,
   },
 };
 export function useThemeConfig() {
