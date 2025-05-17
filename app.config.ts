@@ -28,12 +28,16 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
     },
     platforms: ["ios", "android"],
     plugins: [
+      "react-native-bottom-tabs",
       ["react-native-edge-to-edge", { android: { parentTheme: "Light" } }],
       [
         "expo-build-properties",
         {
           android: {
             usesCleartextTraffic: true,
+          },
+          ios: {
+            useFrameworks: "static",
           },
         },
       ],
@@ -55,15 +59,45 @@ export default ({ config }: ConfigContext): Partial<ExpoConfig> => {
       [
         "expo-font",
         {
-          fonts: [
-            "./assets/fonts/material-symbols.ttf",
-            "./assets/fonts/Silkscreen-Regular.ttf",
-            "./assets/fonts/Figtree-Regular.ttf",
-            "./assets/fonts/Figtree-Medium.ttf",
-            "./assets/fonts/Figtree-SemiBold.ttf",
-            "./assets/fonts/Figtree-Bold.ttf",
-            "./assets/fonts/Figtree-ExtraBold.ttf",
-          ],
+          fonts: ["./assets/fonts/material-symbols.ttf"],
+          android: {
+            fonts: [
+              {
+                fontFamily: "Figtree",
+                fontDefinitions: [
+                  {
+                    path: "./assets/fonts/Figtree-Regular.ttf",
+                    weight: 400,
+                  },
+                  {
+                    path: "./assets/fonts/Figtree-Medium.ttf",
+                    weight: 500,
+                  },
+                  {
+                    path: "./assets/fonts/Figtree-SemiBold.ttf",
+                    weight: 600,
+                  },
+                  {
+                    path: "./assets/fonts/Figtree-Bold.ttf",
+                    weight: 700,
+                  },
+                  {
+                    path: "./assets/fonts/Figtree-ExtraBold.ttf",
+                    weight: 800,
+                  },
+                ],
+              },
+            ],
+          },
+          ios: {
+            fonts: [
+              "./assets/fonts/Figtree-Regular.ttf",
+              "./assets/fonts/Figtree-Medium.ttf",
+              "./assets/fonts/Figtree-SemiBold.ttf",
+              "./assets/fonts/Figtree-Bold.ttf",
+              "./assets/fonts/Figtree-ExtraBold.ttf",
+            ],
+          },
         },
       ],
     ],

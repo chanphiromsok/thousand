@@ -17,7 +17,7 @@ module.exports = function (api) {
       "nativewind/babel",
     ],
     plugins: [
-      ["babel-plugin-react-compiler", { target: "18" }], // must run first!
+      ["babel-plugin-react-compiler"], // must run first!
       [
         "module-resolver",
         {
