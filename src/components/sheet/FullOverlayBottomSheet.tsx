@@ -11,8 +11,9 @@ import {
   useRef,
 } from "react";
 import { FullWindowOverlay } from "react-native-screens";
-import useBottomSheetTheme from "../../hook/useBottomSheetTheme";
+
 import { styles } from "./styles";
+import useBottomSheetTheme from "../../theme/hook/useBottomSheetTheme";
 
 export interface FullWindowOverlayBottomSheetRef {
   present: () => void;

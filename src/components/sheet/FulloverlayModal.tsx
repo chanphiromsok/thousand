@@ -13,7 +13,8 @@ import {
 import { FullWindowOverlay } from "react-native-screens";
 import deviceScreen from "../../platform/deviceScreen";
 import { styles } from "./styles";
-import useBottomSheetTheme from "../../hook/useBottomSheetTheme";
+import useBottomSheetTheme from "../../theme/hook/useBottomSheetTheme";
+
 
 export interface FullWindowOverlayModalRef {
   expand: () => void;

@@ -16,7 +16,8 @@ import React, {
 import device from "../../platform/device";
 import DelayedFreeze from "../views/DelayFreezed";
 import { styles } from "./styles";
-import useBottomSheetTheme from "../../hook/useBottomSheetTheme";
+import useBottomSheetTheme from "../../theme/hook/useBottomSheetTheme";
+
 
 export interface DynamicBottomSheetRef {
   present: () => void;
